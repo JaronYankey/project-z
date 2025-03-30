@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+# Player movement speed
 var speed = 175
 
 
