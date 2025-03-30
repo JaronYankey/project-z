@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://c87lae6frmbbr"]
+
+[ext_resource type="Script" uid="uid://b15x0sedun84k" path="res://Scripts/nimble_power.gd" id="1_n2s6w"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wfcmp"]
+radius = 12.0
+
+[node name="NimblePower" type="Area2D"]
+script = ExtResource("1_n2s6w")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_wfcmp")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

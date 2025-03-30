@@ -1,17 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://be4ipnmi32bia"]
+[gd_scene load_steps=7 format=3 uid="uid://be4ipnmi32bia"]
 
 [ext_resource type="PackedScene" uid="uid://dlcfb4labhork" path="res://Scenes/player.tscn" id="1_1jsbg"]
-[ext_resource type="Script" path="res://Scenes/main.gd" id="1_hae6f"]
+[ext_resource type="Script" uid="uid://nqtnjwrcu8xy" path="res://Scripts/main.gd" id="1_hae6f"]
 [ext_resource type="PackedScene" uid="uid://heqws408voth" path="res://Scenes/weapon_test.tscn" id="2_s6e14"]
 [ext_resource type="PackedScene" uid="uid://dcqsh2kvsd1eb" path="res://Scenes/zombie.tscn" id="3_o082i"]
 [ext_resource type="PackedScene" uid="uid://d3t46u4g7mpha" path="res://Scenes/spawner.tscn" id="4_o1fjq"]
+[ext_resource type="PackedScene" uid="uid://c87lae6frmbbr" path="res://Scenes/nimble_power.tscn" id="6_21xkr"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_hae6f")
 enemy_scenes = [ExtResource("3_o082i")]
 
 [node name="Player" parent="." instance=ExtResource("1_1jsbg")]
-position = Vector2(582, 340)
+position = Vector2(500, 300)
 
 [node name="WeaponTest" parent="Player" instance=ExtResource("2_s6e14")]
 
@@ -32,5 +33,8 @@ position = Vector2(1052, 55)
 
 [node name="SpawnTimer" type="Timer" parent="."]
 wait_time = 2.0
+
+[node name="NimblePower" parent="." instance=ExtResource("6_21xkr")]
+position = Vector2(510, 162)
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

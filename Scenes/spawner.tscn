@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://d3t46u4g7mpha"]
 
-[ext_resource type="Script" path="res://Scenes/spawner.gd" id="1_hcvbl"]
+[ext_resource type="Script" uid="uid://dc51x1dwojdkc" path="res://Scripts/spawner.gd" id="1_hcvbl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dhoju"]
 
