@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://heqws408voth"]
+
+[ext_resource type="Script" path="res://Scripts/weapon_test.gd" id="1_bqc34"]
+[ext_resource type="Texture2D" uid="uid://c4omte8cpf1ul" path="res://Assests/Art/gun_placeholder.png" id="2_f7lgi"]
+[ext_resource type="PackedScene" uid="uid://d4bgkgag2ssh7" path="res://Scenes/bullet.tscn" id="2_i4543"]
+
+[node name="WeaponTest" type="Node2D"]
+script = ExtResource("1_bqc34")
+bullet_scene = ExtResource("2_i4543")
+metadata/_edit_group_ = true
+
+[node name="WeaponImage" type="Sprite2D" parent="."]
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("2_f7lgi")
+
+[node name="Muzzle" type="Marker2D" parent="."]
+position = Vector2(32, -4)

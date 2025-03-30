@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://dlcfb4labhork"]
+
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_oukv8"]
+[ext_resource type="Texture2D" uid="uid://dckb0bvu3ax3m" path="res://Assests/Art/playertest.png" id="2_g888v"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0in7r"]
+radius = 14.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2qnan"]
+radius = 357.841
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+position = Vector2(94, 200)
+script = ExtResource("1_oukv8")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, 2)
+texture = ExtResource("2_g888v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_0in7r")
+
+[node name="Area2DSpawnInhibitor" type="Area2D" parent="." groups=["player"]]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DSpawnInhibitor"]
+visible = false
+shape = SubResource("CircleShape2D_2qnan")

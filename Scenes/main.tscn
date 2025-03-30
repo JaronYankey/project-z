@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://be4ipnmi32bia"]
+
+[ext_resource type="PackedScene" uid="uid://dlcfb4labhork" path="res://Scenes/player.tscn" id="1_1jsbg"]
+[ext_resource type="Script" path="res://Scenes/main.gd" id="1_hae6f"]
+[ext_resource type="PackedScene" uid="uid://heqws408voth" path="res://Scenes/weapon_test.tscn" id="2_s6e14"]
+[ext_resource type="PackedScene" uid="uid://dcqsh2kvsd1eb" path="res://Scenes/zombie.tscn" id="3_o082i"]
+[ext_resource type="PackedScene" uid="uid://d3t46u4g7mpha" path="res://Scenes/spawner.tscn" id="4_o1fjq"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_hae6f")
+enemy_scenes = [ExtResource("3_o082i")]
+
+[node name="Player" parent="." instance=ExtResource("1_1jsbg")]
+position = Vector2(582, 340)
+
+[node name="WeaponTest" parent="Player" instance=ExtResource("2_s6e14")]
+
+[node name="Zombie" parent="." instance=ExtResource("3_o082i")]
+position = Vector2(235, 314)
+
+[node name="Spawner1" parent="." instance=ExtResource("4_o1fjq")]
+position = Vector2(83, 59)
+
+[node name="Spawner2" parent="." instance=ExtResource("4_o1fjq")]
+position = Vector2(1071, 602)
+
+[node name="Spawner3" parent="." instance=ExtResource("4_o1fjq")]
+position = Vector2(77, 581)
+
+[node name="Spawner4" parent="." instance=ExtResource("4_o1fjq")]
+position = Vector2(1052, 55)
+
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
