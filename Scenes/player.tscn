@@ -10,6 +10,7 @@ radius = 14.0
 radius = 357.841
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
+motion_mode = 1
 script = ExtResource("1_oukv8")
 metadata/_edit_group_ = true
 
