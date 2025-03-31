@@ -2,8 +2,7 @@ extends CharacterBody2D
 
 # Player movement speed
 var speed = 175
-var power_ready: bool = false
-var power_type: String
+var power_ready: bool = false # Will be used to moderate ability use.
 var ability = func(): print("No ability selected!!") # Defualt message for now
 
 
