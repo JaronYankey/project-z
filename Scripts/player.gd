@@ -7,9 +7,10 @@ var ability = func(): print("No ability selected!!") # Defualt message for now
 @onready var camera = $Camera2D
 
 func _ready():
-	#TODO: Player stutters when using smoothing on the camera.
 	# For now we allow smoothing, adds some juice. 
 	camera.position_smoothing_enabled = true;
+	#camera.process_callback = 0 I changed this in the inspector. But I think this is 
+	# what it looks like in code.
 
 
 func get_input():
