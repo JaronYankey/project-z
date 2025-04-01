@@ -4,6 +4,12 @@ extends CharacterBody2D
 var speed = 175
 var power_ready: bool = false # Will be used to moderate ability use.
 var ability = func(): print("No ability selected!!") # Defualt message for now
+@onready var camera = $Camera2D
+
+func _ready():
+	#TODO: Player stutters when using smoothing on the camera.
+	# For now we allow smoothing, adds some juice. 
+	camera.position_smoothing_enabled = true;
 
 
 func get_input():
