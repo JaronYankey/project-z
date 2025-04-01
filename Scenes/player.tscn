@@ -31,3 +31,4 @@ visible = false
 shape = SubResource("CircleShape2D_2qnan")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+process_callback = 0
