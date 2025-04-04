@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cga6dkqd4mcg7"
-path="res://.godot/imported/line_bullet.png-0ac7794087fd1ea17fcee0b979ef5a87.ctex"
+uid="uid://dckb0bvu3ax3m"
+path="res://.godot/imported/playertest.png-5035f9431e4b347226e60784c234e1e0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assests/Art/line_bullet.png"
-dest_files=["res://.godot/imported/line_bullet.png-0ac7794087fd1ea17fcee0b979ef5a87.ctex"]
+source_file="res://Assests/Art/PlayerSprites/playertest.png"
+dest_files=["res://.godot/imported/playertest.png-5035f9431e4b347226e60784c234e1e0.ctex"]
 
 [params]
 
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

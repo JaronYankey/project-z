@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4omte8cpf1ul"
-path="res://.godot/imported/gun_placeholder.png-72d05700c6fc89e4807685ffb1beaee7.ctex"
+uid="uid://dlqk82ohn7u1s"
+path="res://.godot/imported/zombietest.png-2ccc2aec624c3448970d400db59655d1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assests/Art/gun_placeholder.png"
-dest_files=["res://.godot/imported/gun_placeholder.png-72d05700c6fc89e4807685ffb1beaee7.ctex"]
+source_file="res://Assests/Art/EnemySprites/zombietest.png"
+dest_files=["res://.godot/imported/zombietest.png-2ccc2aec624c3448970d400db59655d1.ctex"]
 
 [params]
 

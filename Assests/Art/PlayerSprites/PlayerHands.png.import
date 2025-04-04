@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dfy8dcmbt6eba"
-path="res://.godot/imported/circle_bullet.png-1f67ae98430da89c4e134edd18221723.ctex"
+uid="uid://ba7156ydb6i4w"
+path="res://.godot/imported/PlayerHands.png-61d071b1a8af0838b5eb30303e72e441.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assests/Art/circle_bullet.png"
-dest_files=["res://.godot/imported/circle_bullet.png-1f67ae98430da89c4e134edd18221723.ctex"]
+source_file="res://Assests/Art/PlayerSprites/PlayerHands.png"
+dest_files=["res://.godot/imported/PlayerHands.png-61d071b1a8af0838b5eb30303e72e441.ctex"]
 
 [params]
 

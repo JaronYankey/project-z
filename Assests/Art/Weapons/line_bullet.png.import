@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dlqk82ohn7u1s"
-path="res://.godot/imported/zombietest.png-054d14013981341fe2bbc6823ececa5e.ctex"
+uid="uid://cga6dkqd4mcg7"
+path="res://.godot/imported/line_bullet.png-ce76947e8996cc19a2228e7e91b07fd0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assests/Art/zombietest.png"
-dest_files=["res://.godot/imported/zombietest.png-054d14013981341fe2bbc6823ececa5e.ctex"]
+source_file="res://Assests/Art/Weapons/line_bullet.png"
+dest_files=["res://.godot/imported/line_bullet.png-ce76947e8996cc19a2228e7e91b07fd0.ctex"]
 
 [params]
 

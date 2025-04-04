@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dckb0bvu3ax3m"
-path="res://.godot/imported/playertest.png-60717002a1632592f806aec5bd3904c3.ctex"
+uid="uid://dfy8dcmbt6eba"
+path="res://.godot/imported/circle_bullet.png-0d0d03da7be69ea7c674ed4d5bfa79df.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assests/Art/playertest.png"
-dest_files=["res://.godot/imported/playertest.png-60717002a1632592f806aec5bd3904c3.ctex"]
+source_file="res://Assests/Art/Weapons/circle_bullet.png"
+dest_files=["res://.godot/imported/circle_bullet.png-0d0d03da7be69ea7c674ed4d5bfa79df.ctex"]
 
 [params]
 
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1
