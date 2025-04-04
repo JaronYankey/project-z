@@ -3,14 +3,16 @@
 [ext_resource type="PackedScene" uid="uid://dlcfb4labhork" path="res://Scenes/player.tscn" id="1_1jsbg"]
 [ext_resource type="Script" uid="uid://nqtnjwrcu8xy" path="res://Scripts/main.gd" id="1_hae6f"]
 [ext_resource type="PackedScene" uid="uid://heqws408voth" path="res://Scenes/weapon_test.tscn" id="2_s6e14"]
+[ext_resource type="PackedScene" uid="uid://dsr846pv2ewrb" path="res://Scenes/main_map.tscn" id="3_344ge"]
 [ext_resource type="PackedScene" uid="uid://dcqsh2kvsd1eb" path="res://Scenes/zombie.tscn" id="3_o082i"]
 [ext_resource type="PackedScene" uid="uid://d3t46u4g7mpha" path="res://Scenes/spawner.tscn" id="4_o1fjq"]
 [ext_resource type="PackedScene" uid="uid://c87lae6frmbbr" path="res://Scenes/nimble_power.tscn" id="6_21xkr"]
-[ext_resource type="Texture2D" uid="uid://cl52yi3ht54hj" path="res://Assests/Art/icon.svg" id="7_6bp64"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_hae6f")
 enemy_scenes = [ExtResource("3_o082i")]
+
+[node name="MainMap" parent="." instance=ExtResource("3_344ge")]
 
 [node name="Player" parent="." instance=ExtResource("1_1jsbg")]
 position = Vector2(500, 300)
@@ -37,25 +39,5 @@ wait_time = 2.0
 
 [node name="NimblePower" parent="." instance=ExtResource("6_21xkr")]
 position = Vector2(510, 162)
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(350, 176)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("7_6bp64")
-
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-position = Vector2(-319, -135)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("7_6bp64")
-
-[node name="Sprite2D3" type="Sprite2D" parent="."]
-position = Vector2(-251, 780)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("7_6bp64")
-
-[node name="Sprite2D4" type="Sprite2D" parent="."]
-position = Vector2(1109, -56)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("7_6bp64")
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

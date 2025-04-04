@@ -1,9 +1,16 @@
 extends CharacterBody2D
 
-# Player movement speed
-var speed = 175
+# Player movement values
+@export var max_speed: float = 200.0
+@export var acceleration: float = 800.0
+@export var friction: float = 600.0
+
+# Dashing TEST
+@export var dashing_speed: float = 400.0
+@export var dash_time: float = 0.2
+
 var power_ready: bool = false # Will be used to moderate ability use.
-var ability = func(): print("No ability selected!!") # Defualt message for now
+var ability
 @onready var camera = $Camera2D
 
 func _ready():
@@ -12,24 +19,36 @@ func _ready():
 	#camera.process_callback = 0 I changed this in the inspector. But I think this is 
 	# what it looks like in code.
 
-
-func get_input():
-	var input_direction = Input.get_vector("left", "right", "up", "down")
-	velocity = input_direction * speed
 	
 func _physics_process(delta):
-	get_input()
-	move_and_slide()
+	var input = Vector2.ZERO
+	
+	input.x = Input.get_action_strength("right") - Input.get_action_strength("left")
+	input.y = Input.get_action_strength("down") - Input.get_action_strength("up")
+	input = input.normalized()
+	
+	if input != Vector2.ZERO:
+		velocity = velocity.move_toward(input * max_speed, acceleration * delta)
+	else:
+		velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
+	
 	if Input.is_action_pressed("special_power"):
 		# Must use .call() on the var ability to get the function to run.
-		ability.call() # Run the appropriate function for the power the player has.
+		if ability:
+			ability.call() # Run the appropriate function for the power the player has.
+	
+	move_and_slide()
 	
 func set_power(power: String):
 	if power == "nimble":
 		ability = dash # No parentheses because its assignment, not a call to dash()
 
 func dash():
-	print("I DASHED FORWARD!!!")
+	if not power_ready:
+		power_ready = true
+		velocity *= dashing_speed / max_speed
+		await get_tree().create_timer(dash_time).timeout
+		power_ready = false
 	
 func riot_charge():
 	pass

@@ -12,6 +12,8 @@ radius = 357.841
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 motion_mode = 1
 script = ExtResource("1_oukv8")
+dashing_speed = 500.0
+dash_time = 0.4
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
