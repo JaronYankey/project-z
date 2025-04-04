@@ -1,7 +1,69 @@
-[gd_scene load_steps=5 format=3 uid="uid://dlcfb4labhork"]
+[gd_scene load_steps=13 format=3 uid="uid://dlcfb4labhork"]
 
 [ext_resource type="Script" uid="uid://ce7fyrlaqthtx" path="res://Scripts/player.gd" id="1_oukv8"]
-[ext_resource type="Texture2D" uid="uid://dckb0bvu3ax3m" path="res://Assests/Art/PlayerSprites/playertest.png" id="2_g888v"]
+[ext_resource type="Texture2D" uid="uid://bwds1x05mwdva" path="res://Assests/Art/PlayerSprites/PlayerBase.png" id="2_cvnsp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6t5aa"]
+atlas = ExtResource("2_cvnsp")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vgqql"]
+atlas = ExtResource("2_cvnsp")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fkybt"]
+atlas = ExtResource("2_cvnsp")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x3wgy"]
+atlas = ExtResource("2_cvnsp")
+region = Rect2(0, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3smsa"]
+atlas = ExtResource("2_cvnsp")
+region = Rect2(16, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8erm5"]
+atlas = ExtResource("2_cvnsp")
+region = Rect2(32, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f1ek2"]
+atlas = ExtResource("2_cvnsp")
+region = Rect2(48, 64, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tx1dd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6t5aa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vgqql")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fkybt")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x3wgy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3smsa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8erm5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f1ek2")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 6.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0in7r"]
 radius = 14.0
@@ -10,16 +72,21 @@ radius = 14.0
 radius = 357.841
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
+scale = Vector2(4, 4)
 motion_mode = 1
 script = ExtResource("1_oukv8")
 dashing_speed = 500.0
 dash_time = 0.4
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 position = Vector2(0, 2)
-texture = ExtResource("2_g888v")
+sprite_frames = SubResource("SpriteFrames_tx1dd")
+animation = &"walk"
+frame = 3
+frame_progress = 0.837126
+flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)

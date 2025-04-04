@@ -1,17 +1,59 @@
-[gd_scene load_steps=4 format=3 uid="uid://heqws408voth"]
+[gd_scene load_steps=9 format=3 uid="uid://heqws408voth"]
 
 [ext_resource type="Script" uid="uid://xlwfhy0t66c0" path="res://Scripts/weapon_test.gd" id="1_bqc34"]
-[ext_resource type="Texture2D" uid="uid://c4omte8cpf1ul" path="res://Assests/Art/Weapons/gun_placeholder.png" id="2_f7lgi"]
 [ext_resource type="PackedScene" uid="uid://d4bgkgag2ssh7" path="res://Scenes/bullet.tscn" id="2_i4543"]
+[ext_resource type="Texture2D" uid="uid://cgx8nhlni6gm5" path="res://Assests/Art/Weapons/Shotgun .png" id="3_uck13"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rh400"]
+atlas = ExtResource("3_uck13")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dcltf"]
+atlas = ExtResource("3_uck13")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m2vh1"]
+atlas = ExtResource("3_uck13")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8n5qr"]
+atlas = ExtResource("3_uck13")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xalxo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rh400")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dcltf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m2vh1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8n5qr")
+}],
+"loop": true,
+"name": &"fire",
+"speed": 10.0
+}]
 
 [node name="WeaponTest" type="Node2D"]
+scale = Vector2(0.75, 0.75)
 script = ExtResource("1_bqc34")
 bullet_scene = ExtResource("2_i4543")
 metadata/_edit_group_ = true
 
-[node name="WeaponImage" type="Sprite2D" parent="."]
+[node name="WeaponAnimation" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1.25, 1.25)
-texture = ExtResource("2_f7lgi")
+sprite_frames = SubResource("SpriteFrames_xalxo")
+animation = &"fire"
+frame = 2
+frame_progress = 0.480913
+speed_scale = 1.3
+flip_h = true
 
 [node name="Muzzle" type="Marker2D" parent="."]
-position = Vector2(32, -4)
+position = Vector2(25.3333, 1.33333)

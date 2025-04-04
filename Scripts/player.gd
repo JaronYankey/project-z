@@ -9,9 +9,12 @@ extends CharacterBody2D
 @export var dashing_speed: float = 400.0
 @export var dash_time: float = 0.2
 
+@onready var camera = $Camera2D
+@onready var animations = $AnimatedSprite2D
+
 var power_ready: bool = false # Will be used to moderate ability use.
 var ability
-@onready var camera = $Camera2D
+
 
 func _ready():
 	# For now we allow smoothing, adds some juice. 
@@ -19,6 +22,8 @@ func _ready():
 	#camera.process_callback = 0 I changed this in the inspector. But I think this is 
 	# what it looks like in code.
 
+func _process(delta):
+	play_animation()
 	
 func _physics_process(delta):
 	var input = Vector2.ZERO
@@ -38,7 +43,19 @@ func _physics_process(delta):
 			ability.call() # Run the appropriate function for the power the player has.
 	
 	move_and_slide()
+
+func play_animation():
+	if velocity != Vector2.ZERO:
+		animations.play("walk")
+	else:
+		animations.play("idle")
+		
+	if Input.is_action_pressed("left"):
+		animations.flip_h = false
+	if Input.is_action_pressed("right"):
+		animations.flip_h = true
 	
+		
 func set_power(power: String):
 	if power == "nimble":
 		ability = dash # No parentheses because its assignment, not a call to dash()

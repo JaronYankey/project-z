@@ -15,9 +15,10 @@ enemy_scenes = [ExtResource("3_o082i")]
 [node name="MainMap" parent="." instance=ExtResource("3_344ge")]
 
 [node name="Player" parent="." instance=ExtResource("1_1jsbg")]
-position = Vector2(500, 300)
+position = Vector2(492, 296)
 
 [node name="WeaponTest" parent="Player" instance=ExtResource("2_s6e14")]
+position = Vector2(-2.75, 2.75)
 
 [node name="Zombie" parent="." instance=ExtResource("3_o082i")]
 position = Vector2(235, 314)
