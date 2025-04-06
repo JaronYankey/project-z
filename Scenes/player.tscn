@@ -65,8 +65,9 @@ animations = [{
 "speed": 6.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_0in7r"]
-radius = 14.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cvnsp"]
+radius = 5.5
+height = 17.5
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2qnan"]
 radius = 357.841
@@ -90,7 +91,7 @@ flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)
-shape = SubResource("CircleShape2D_0in7r")
+shape = SubResource("CapsuleShape2D_cvnsp")
 
 [node name="Area2DSpawnInhibitor" type="Area2D" parent="." groups=["player"]]
 visible = false

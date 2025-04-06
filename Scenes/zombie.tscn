@@ -1,19 +1,61 @@
-[gd_scene load_steps=4 format=3 uid="uid://dcqsh2kvsd1eb"]
+[gd_scene load_steps=9 format=3 uid="uid://dcqsh2kvsd1eb"]
 
-[ext_resource type="Texture2D" uid="uid://dlqk82ohn7u1s" path="res://Assests/Art/EnemySprites/zombietest.png" id="1_l7itd"]
 [ext_resource type="Script" uid="uid://b01s4x8uqkebb" path="res://Scripts/zombie.gd" id="1_p82q3"]
+[ext_resource type="Texture2D" uid="uid://dvjb5qo4f3m1o" path="res://Assests/Art/EnemySprites/zombie.png" id="2_n70j1"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_pd0om"]
-radius = 13.0384
+[sub_resource type="AtlasTexture" id="AtlasTexture_iyl7r"]
+atlas = ExtResource("2_n70j1")
+region = Rect2(0, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vy0uf"]
+atlas = ExtResource("2_n70j1")
+region = Rect2(16, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w2xga"]
+atlas = ExtResource("2_n70j1")
+region = Rect2(32, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4slyf"]
+atlas = ExtResource("2_n70j1")
+region = Rect2(48, 64, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5ia6i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iyl7r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vy0uf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w2xga")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4slyf")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n70j1"]
+radius = 6.4
+height = 17.6
 
 [node name="Zombie" type="CharacterBody2D"]
+scale = Vector2(3.75, 3.75)
 script = ExtResource("1_p82q3")
+metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_l7itd")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_5ia6i")
+animation = &"walk"
+frame_progress = 0.881285
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_pd0om")
+position = Vector2(-0.533333, 0)
+shape = SubResource("CapsuleShape2D_n70j1")
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 offset_left = 13.0

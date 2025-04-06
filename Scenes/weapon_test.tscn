@@ -1,8 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://heqws408voth"]
+[gd_scene load_steps=11 format=3 uid="uid://heqws408voth"]
 
 [ext_resource type="Script" uid="uid://xlwfhy0t66c0" path="res://Scripts/weapon_test.gd" id="1_bqc34"]
 [ext_resource type="PackedScene" uid="uid://d4bgkgag2ssh7" path="res://Scenes/bullet.tscn" id="2_i4543"]
 [ext_resource type="Texture2D" uid="uid://cgx8nhlni6gm5" path="res://Assests/Art/Weapons/Shotgun .png" id="3_uck13"]
+[ext_resource type="AudioStream" uid="uid://du1wbg3ksqi7k" path="res://Assests/Sound/GunSounds/Massive Hit Stumble A.wav" id="4_rh400"]
+[ext_resource type="AudioStream" uid="uid://ddhl2af1gddgc" path="res://Assests/Sound/GunSounds/gun_cock.wav" id="5_dcltf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rh400"]
 atlas = ExtResource("3_uck13")
@@ -50,10 +52,16 @@ metadata/_edit_group_ = true
 scale = Vector2(1.25, 1.25)
 sprite_frames = SubResource("SpriteFrames_xalxo")
 animation = &"fire"
-frame = 2
-frame_progress = 0.480913
 speed_scale = 1.3
 flip_h = true
 
 [node name="Muzzle" type="Marker2D" parent="."]
 position = Vector2(25.3333, 1.33333)
+
+[node name="ShootingSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_rh400")
+
+[node name="ReloadSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_dcltf")
+volume_db = -2.65
+pitch_scale = 0.93

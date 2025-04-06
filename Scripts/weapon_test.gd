@@ -14,14 +14,7 @@ func _process(delta):
 	global_mouse_pos = get_global_mouse_position()
 	look_at(global_mouse_pos)  # Rotate toward the mouse
 	
-	# TODO: This does not work to flip sprite
-	var mouse_local = get_local_mouse_position()
-	if mouse_local.x < position.x:
-		weapon_animation.flip_h = false
-		weapon_animation.flip_v = true
-	else:
-		weapon_animation.flip_h = true
-		weapon_animation.flip_v = false
+	# TODO: Get gun to flip to correct directions 
 	
 	if Input.is_action_pressed("shoot") and can_shoot:
 		shoot()
@@ -39,8 +32,10 @@ func shoot():
 	
 	# TODO: Fixed this slightly. But need a better way to fine tune this.
 	weapon_animation.play("fire")
+	$ShootingSound.play()
 	await get_tree().create_timer(0.4).timeout
 	weapon_animation.stop()
-	
+	#$ReloadSound.play() # Shotgun type of cocking sound. Don't like this for that purpose.
+	# Shotgun cocking should sound heavy and powerful along with the weapon feeling strong.
 	await get_tree().create_timer(fire_rate).timeout
 	can_shoot = true
