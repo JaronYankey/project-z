@@ -45,6 +45,7 @@ height = 17.6
 
 [node name="Zombie" type="CharacterBody2D" groups=["basic_zombie"]]
 scale = Vector2(3.75, 3.75)
+motion_mode = 1
 script = ExtResource("1_p82q3")
 metadata/_edit_group_ = true
 

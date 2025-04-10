@@ -43,7 +43,7 @@ animations = [{
 }]
 
 [node name="WeaponTest" type="Node2D"]
-scale = Vector2(0.75, 0.75)
+scale = Vector2(0.69, 0.69)
 script = ExtResource("1_bqc34")
 bullet_scene = ExtResource("2_i4543")
 metadata/_edit_group_ = true

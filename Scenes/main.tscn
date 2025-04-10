@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://be4ipnmi32bia"]
+[gd_scene load_steps=9 format=3 uid="uid://be4ipnmi32bia"]
 
 [ext_resource type="PackedScene" uid="uid://dlcfb4labhork" path="res://Scenes/player.tscn" id="1_1jsbg"]
 [ext_resource type="Script" uid="uid://nqtnjwrcu8xy" path="res://Scripts/main.gd" id="1_hae6f"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dcqsh2kvsd1eb" path="res://Scenes/zombie.tscn" id="3_o082i"]
 [ext_resource type="PackedScene" uid="uid://d3t46u4g7mpha" path="res://Scenes/spawner.tscn" id="4_o1fjq"]
 [ext_resource type="PackedScene" uid="uid://c87lae6frmbbr" path="res://Scenes/nimble_power.tscn" id="6_21xkr"]
+[ext_resource type="PackedScene" uid="uid://ol8fcgtf8akr" path="res://Scenes/terry.tscn" id="6_344ge"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_hae6f")
@@ -15,13 +16,13 @@ enemy_scenes = [ExtResource("3_o082i")]
 [node name="MainMap" parent="." instance=ExtResource("3_344ge")]
 
 [node name="Player" parent="." instance=ExtResource("1_1jsbg")]
-position = Vector2(492, 296)
+position = Vector2(-545, -619)
 
 [node name="WeaponTest" parent="Player" instance=ExtResource("2_s6e14")]
 position = Vector2(-2.75, 2.75)
 
 [node name="Zombie" parent="." instance=ExtResource("3_o082i")]
-position = Vector2(235, 314)
+position = Vector2(349, -512)
 
 [node name="Spawner1" parent="." instance=ExtResource("4_o1fjq")]
 position = Vector2(83, 59)
@@ -39,8 +40,11 @@ position = Vector2(1052, 55)
 wait_time = 2.0
 
 [node name="NimblePower" parent="." instance=ExtResource("6_21xkr")]
-position = Vector2(510, 162)
+position = Vector2(-548, -607)
 
 [node name="LevelMusic" type="AudioStreamPlayer2D" parent="."]
+
+[node name="Terry" parent="." instance=ExtResource("6_344ge")]
+position = Vector2(-282, -480)
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
