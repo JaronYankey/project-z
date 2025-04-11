@@ -36,15 +36,24 @@ position = Vector2(77, 581)
 [node name="Spawner4" parent="." instance=ExtResource("4_o1fjq")]
 position = Vector2(1052, 55)
 
+[node name="Spawner5" parent="." instance=ExtResource("4_o1fjq")]
+position = Vector2(846, -198)
+
+[node name="Spawner6" parent="." instance=ExtResource("4_o1fjq")]
+position = Vector2(633, 1111)
+
+[node name="Spawner7" parent="." instance=ExtResource("4_o1fjq")]
+position = Vector2(-645, 969)
+
 [node name="SpawnTimer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 1.5
 
 [node name="NimblePower" parent="." instance=ExtResource("6_21xkr")]
-position = Vector2(-548, -607)
+position = Vector2(-314, -632)
 
 [node name="LevelMusic" type="AudioStreamPlayer2D" parent="."]
 
 [node name="Terry" parent="." instance=ExtResource("6_344ge")]
-position = Vector2(-282, -480)
+position = Vector2(-723, -492)
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

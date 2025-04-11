@@ -12,6 +12,10 @@ extends CharacterBody2D
 @onready var camera = $Camera2D
 @onready var animations = $AnimatedSprite2D
 
+var terry: Node2D = null
+var pulling_terry = false
+var terry_leashed = false
+var near_terry = false
 var power_ready: bool = false # Will be used to moderate ability use.
 var ability
 
@@ -40,7 +44,20 @@ func _physics_process(delta):
 	if Input.is_action_pressed("special_power"):
 		# Must use .call() on the var ability to get the function to run.
 		if ability:
-			ability.call() # Run the appropriate function for the power the player has.
+			ability.call(delta) # Run the appropriate function for the power the player has.
+	if Input.is_action_just_released("interact") and near_terry:
+		terry_leashed = !terry_leashed
+		terry.is_pulled = !terry.is_pulled
+		pulling_terry = !pulling_terry
+	
+	if pulling_terry:
+		max_speed = 27
+		acceleration = 20
+		friction = 1700
+	elif pulling_terry == false:
+		max_speed = 200
+		acceleration = 800
+		friction = 600
 	
 	move_and_slide()
 
@@ -60,15 +77,34 @@ func set_power(power: String):
 	if power == "nimble":
 		ability = dash # No parentheses because its assignment, not a call to dash()
 
-func dash():
+func dash(delta):
 	if not power_ready:
 		power_ready = true
+		velocity = velocity.move_toward(DisplayServer.mouse_get_position(), acceleration * delta )
 		velocity *= dashing_speed / max_speed
 		await get_tree().create_timer(dash_time).timeout
 		power_ready = false
+		move_and_slide()
 	
 func riot_charge():
 	pass
 	
 func bullet_frenzy():
 	pass
+
+
+func _on_area_2d_spawn_inhibitor_body_entered(body):
+	if body.is_in_group("terry"):
+		near_terry = true
+		terry = body
+	# Rough "mele" kill mechanic
+	if body.is_in_group("basic_zombie") and power_ready:
+		body.queue_free()
+		
+
+
+func _on_area_2d_spawn_inhibitor_body_exited(body):
+	if body.is_in_group("terry"):
+		near_terry = false
+		pass
+		#terry = null

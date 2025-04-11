@@ -7,6 +7,7 @@
 radius = 12.0
 
 [node name="NimblePower" type="Area2D"]
+scale = Vector2(3, 3)
 script = ExtResource("1_n2s6w")
 metadata/_edit_group_ = true
 

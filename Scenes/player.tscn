@@ -70,13 +70,13 @@ radius = 5.5
 height = 17.5
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2qnan"]
-radius = 357.841
+radius = 27.2594
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 scale = Vector2(3.8, 3.8)
 motion_mode = 1
 script = ExtResource("1_oukv8")
-dashing_speed = 500.0
+dashing_speed = 600.0
 dash_time = 0.4
 metadata/_edit_group_ = true
 
@@ -94,11 +94,12 @@ position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_cvnsp")
 
 [node name="Area2DSpawnInhibitor" type="Area2D" parent="." groups=["player"]]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DSpawnInhibitor"]
-visible = false
 shape = SubResource("CircleShape2D_2qnan")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 process_callback = 0
+
+[connection signal="body_entered" from="Area2DSpawnInhibitor" to="." method="_on_area_2d_spawn_inhibitor_body_entered"]
+[connection signal="body_exited" from="Area2DSpawnInhibitor" to="." method="_on_area_2d_spawn_inhibitor_body_exited"]

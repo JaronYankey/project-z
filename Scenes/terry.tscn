@@ -1,18 +1,39 @@
-[gd_scene load_steps=3 format=3 uid="uid://ol8fcgtf8akr"]
+[gd_scene load_steps=6 format=3 uid="uid://ol8fcgtf8akr"]
 
+[ext_resource type="Script" uid="uid://o67hixtk2026" path="res://Scripts/terry.gd" id="1_3p6b6"]
 [ext_resource type="Texture2D" uid="uid://dckb0bvu3ax3m" path="res://Assests/Art/PlayerSprites/playertest.png" id="1_4swkh"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_3p6b6"]
-radius = 59.0339
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_3p6b6"]
+friction = 2.0
+rough = true
 
-[node name="Terry" type="RigidBody2D"]
-mass = 0.093
+[sub_resource type="CircleShape2D" id="CircleShape2D_3p6b6"]
+radius = 188.13
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v1w1x"]
+radius = 57.0789
+
+[node name="Terry" type="RigidBody2D" groups=["terry"]]
+physics_material_override = SubResource("PhysicsMaterial_3p6b6")
 gravity_scale = 0.0
+linear_damp_mode = 1
+linear_damp = 1.0
+script = ExtResource("1_3p6b6")
+pull_force = 23.0
+friction = 900.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, 1)
 scale = Vector2(4, 4)
 texture = ExtResource("1_4swkh")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Line2D" type="Line2D" parent="."]
+default_color = Color(0.768627, 0, 0, 1)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_3p6b6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_v1w1x")

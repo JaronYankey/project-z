@@ -8,7 +8,7 @@ func _ready():
 	spawners_array = get_tree().get_nodes_in_group("spawner")
 	spawn_timer.start()
 
-#TODO Need to do something about the custome ghetto scaling for sprites that i'm doing currently.
+#TODO Need to do something about the custome ghetto scaling for sprites that i'm doing currently. r
 
 # TODO: Make it so zombies dont spawn if the player is in the area. I dont ever
 # want the player to see a zombie spawn. Shold always feel like their coming from off screen
