@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://be4ipnmi32bia"]
+[gd_scene load_steps=10 format=3 uid="uid://be4ipnmi32bia"]
 
 [ext_resource type="PackedScene" uid="uid://dlcfb4labhork" path="res://Scenes/player.tscn" id="1_1jsbg"]
 [ext_resource type="Script" uid="uid://nqtnjwrcu8xy" path="res://Scripts/main.gd" id="1_hae6f"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://d3t46u4g7mpha" path="res://Scenes/spawner.tscn" id="4_o1fjq"]
 [ext_resource type="PackedScene" uid="uid://c87lae6frmbbr" path="res://Scenes/nimble_power.tscn" id="6_21xkr"]
 [ext_resource type="PackedScene" uid="uid://ol8fcgtf8akr" path="res://Scenes/terry.tscn" id="6_344ge"]
+[ext_resource type="AudioStream" uid="uid://ct43us5ypfu5a" path="res://Assests/Music/Ambient Vol3 Defeat Main.wav" id="8_ynf5e"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_hae6f")
@@ -52,8 +53,12 @@ wait_time = 1.5
 position = Vector2(-314, -632)
 
 [node name="LevelMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_ynf5e")
+autoplay = true
 
 [node name="Terry" parent="." instance=ExtResource("6_344ge")]
 position = Vector2(-723, -492)
+
+[node name="CritTest" type="AudioStreamPlayer2D" parent="."]
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

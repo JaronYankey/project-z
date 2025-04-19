@@ -7,8 +7,15 @@ var is_pulled = false
 var player_ref: Node2D = null
 var direction: Vector2
 
+@onready var terry_collison = $CollisionShape2D
+
 func _ready():
 	player_ref = get_tree().get_first_node_in_group("player")
+
+
+func _process(delta):
+	pass
+
 
 func _physics_process(delta):
 	
@@ -22,5 +29,12 @@ func _physics_process(delta):
 		
 		# Leash visual
 		$Line2D.clear_points()
-		$Line2D.add_point(position)
-		$Line2D.add_point(player_ref.position)
+		$Line2D.points = [
+			$Line2D.to_local(global_position),
+			$Line2D.to_local(player_ref.global_position)
+		]
+
+
+func _on_terry_body_zone_body_entered(body):
+	if body.is_in_group("basic_zombie"):
+		print("DEALT 10 DAMAGE!!")

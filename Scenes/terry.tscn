@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://ol8fcgtf8akr"]
+[gd_scene load_steps=7 format=3 uid="uid://ol8fcgtf8akr"]
 
 [ext_resource type="Script" uid="uid://o67hixtk2026" path="res://Scripts/terry.gd" id="1_3p6b6"]
 [ext_resource type="Texture2D" uid="uid://dckb0bvu3ax3m" path="res://Assests/Art/PlayerSprites/playertest.png" id="1_4swkh"]
@@ -11,7 +11,10 @@ rough = true
 radius = 188.13
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v1w1x"]
-radius = 57.0789
+radius = 56.0089
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_osmod"]
+radius = 85.0235
 
 [node name="Terry" type="RigidBody2D" groups=["terry"]]
 physics_material_override = SubResource("PhysicsMaterial_3p6b6")
@@ -28,7 +31,7 @@ scale = Vector2(4, 4)
 texture = ExtResource("1_4swkh")
 
 [node name="Line2D" type="Line2D" parent="."]
-default_color = Color(0.768627, 0, 0, 1)
+default_color = Color(0.529935, 0.366272, 0.202985, 1)
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -37,3 +40,10 @@ shape = SubResource("CircleShape2D_3p6b6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_v1w1x")
+
+[node name="TerryBodyZone" type="Area2D" parent="."]
+
+[node name="TerryBody" type="CollisionShape2D" parent="TerryBodyZone"]
+shape = SubResource("CircleShape2D_osmod")
+
+[connection signal="body_entered" from="TerryBodyZone" to="." method="_on_terry_body_zone_body_entered"]

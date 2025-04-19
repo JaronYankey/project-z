@@ -1,7 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://dlcfb4labhork"]
+[gd_scene load_steps=16 format=3 uid="uid://dlcfb4labhork"]
 
 [ext_resource type="Script" uid="uid://ce7fyrlaqthtx" path="res://Scripts/player.gd" id="1_oukv8"]
 [ext_resource type="Texture2D" uid="uid://bwds1x05mwdva" path="res://Assests/Art/PlayerSprites/PlayerBase.png" id="2_cvnsp"]
+[ext_resource type="AudioStream" uid="uid://dup177nkq1q53" path="res://Assests/Sound/Moving/dashTest.wav" id="3_6t5aa"]
+[ext_resource type="PackedScene" uid="uid://ulmrovix8u3m" path="res://Scenes/hud.tscn" id="4_vgqql"]
+[ext_resource type="AudioStream" uid="uid://yngd5xrt5q0i" path="res://Assests/Sound/GunSounds/slicev1wav.wav" id="5_fkybt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6t5aa"]
 atlas = ExtResource("2_cvnsp")
@@ -78,6 +81,8 @@ motion_mode = 1
 script = ExtResource("1_oukv8")
 dashing_speed = 600.0
 dash_time = 0.4
+slice_sound = ExtResource("5_fkybt")
+dash_sound = ExtResource("3_6t5aa")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -100,6 +105,18 @@ shape = SubResource("CircleShape2D_2qnan")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 process_callback = 0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_6t5aa")
+
+[node name="HUD" parent="." instance=ExtResource("4_vgqql")]
+offset_left = -212.0
+offset_top = -118.0
+offset_right = 214.0
+offset_bottom = 121.0
+
+[node name="Slice" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_fkybt")
 
 [connection signal="body_entered" from="Area2DSpawnInhibitor" to="." method="_on_area_2d_spawn_inhibitor_body_entered"]
 [connection signal="body_exited" from="Area2DSpawnInhibitor" to="." method="_on_area_2d_spawn_inhibitor_body_exited"]

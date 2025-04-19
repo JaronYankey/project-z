@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @export var speed: float = 50
 @onready var animation = $AnimatedSprite2D
+@onready var health_bar = $ProgressBar
 var player: Node2D = null
 var terry: Node2D = null
 var target: Node2D = null
@@ -11,6 +12,7 @@ func _ready():
 	player = get_tree().get_first_node_in_group("player")
 	terry = get_tree().get_first_node_in_group("terry")
 	targets = [terry, terry, terry, player]
+	health_bar.value = 100
 	
 	target = targets.pick_random()
 func _physics_process(delta):
@@ -23,3 +25,19 @@ func _physics_process(delta):
 		velocity = direction * speed
 		move_and_slide()
 		animation.play()
+
+func _process(delta):
+	if health_bar.value <= 0:
+		set_process(false)
+		set_physics_process(false)
+		$CollisionShape2D.disabled = true
+		self.hide()
+		$DeathSound.play()
+
+func shot(damage: int):
+	health_bar.value = health_bar.value - damage
+	$AudioStreamPlayer2D.play()
+
+
+func _on_death_sound_finished():
+	queue_free()

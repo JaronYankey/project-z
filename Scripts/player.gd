@@ -9,6 +9,11 @@ extends CharacterBody2D
 @export var dashing_speed: float = 400.0
 @export var dash_time: float = 0.2
 
+# These don't work how I thought
+@export var slice_sound : AudioStream
+@export var dash_sound : AudioStream
+
+
 @onready var camera = $Camera2D
 @onready var animations = $AnimatedSprite2D
 
@@ -80,6 +85,7 @@ func set_power(power: String):
 func dash(delta):
 	if not power_ready:
 		power_ready = true
+		$AudioStreamPlayer2D.play() # Temporary works for dash sound
 		velocity = velocity.move_toward(DisplayServer.mouse_get_position(), acceleration * delta )
 		velocity *= dashing_speed / max_speed
 		await get_tree().create_timer(dash_time).timeout
@@ -99,7 +105,9 @@ func _on_area_2d_spawn_inhibitor_body_entered(body):
 		terry = body
 	# Rough "mele" kill mechanic
 	if body.is_in_group("basic_zombie") and power_ready:
-		body.queue_free()
+		body.shot(200)
+		$Slice.play()
+		
 		
 
 

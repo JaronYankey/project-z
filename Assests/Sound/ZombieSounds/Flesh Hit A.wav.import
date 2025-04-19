@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://8kt3f3smmv8c"
+path="res://.godot/imported/Flesh Hit A.wav-0bdb0cdf812a51a7b82cf3ce4add8c4f.sample"
+
+[deps]
+
+source_file="res://Assests/Sound/ZombieSounds/Flesh Hit A.wav"
+dest_files=["res://.godot/imported/Flesh Hit A.wav-0bdb0cdf812a51a7b82cf3ce4add8c4f.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

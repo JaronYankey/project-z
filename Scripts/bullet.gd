@@ -1,5 +1,6 @@
 extends Area2D
 
+signal crit
 
 @onready var audio_player = $AudioStreamPlayer2D
 var speed: float = 800
@@ -19,6 +20,10 @@ func set_velocity(bullet_speed: float):
 func _on_body_entered(body):
 	# Zombies will have health so, they wont be one shot. This is temporary.
 	if body.is_in_group("basic_zombie"):
-		body.queue_free() # Don't know if we have to "set defered physics" at some point? Like we did in 
+		body.shot(50)
+		if randi() % 8 == 1:
+			body.shot(100)
+			emit_signal("crit")
+		#body.queue_free() # Don't know if we have to "set defered physics" at some point? Like we did in 
 	# dodge the creeps. I don't know if it will matter for preformance later on.
 	queue_free() # Destroy bullet on impact

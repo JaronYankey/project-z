@@ -7,7 +7,10 @@ var spawners_array: Array = []
 func _ready():
 	spawners_array = get_tree().get_nodes_in_group("spawner")
 	spawn_timer.start()
+	
 
+func _on_crit():
+	print("CRIT RECEIVED!!!")
 #TODO Need to do something about the custome ghetto scaling for sprites that i'm doing currently. r
 
 # TODO: Make it so zombies dont spawn if the player is in the area. I dont ever
