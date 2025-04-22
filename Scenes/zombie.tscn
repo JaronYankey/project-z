@@ -52,6 +52,7 @@ bg_color = Color(0.323825, 0.701234, 0.224525, 1)
 scale = Vector2(3.75, 3.75)
 motion_mode = 1
 script = ExtResource("1_p82q3")
+getting_shot_sound = ExtResource("3_iyl7r")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

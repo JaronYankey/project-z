@@ -17,47 +17,38 @@ enemy_scenes = [ExtResource("3_o082i")]
 [node name="MainMap" parent="." instance=ExtResource("3_344ge")]
 
 [node name="Player" parent="." instance=ExtResource("1_1jsbg")]
-position = Vector2(-545, -619)
+position = Vector2(-1269, -634)
 
 [node name="WeaponTest" parent="Player" instance=ExtResource("2_s6e14")]
 position = Vector2(-2.75, 2.75)
 
 [node name="Zombie" parent="." instance=ExtResource("3_o082i")]
-position = Vector2(349, -512)
+position = Vector2(542, -44)
 
 [node name="Spawner1" parent="." instance=ExtResource("4_o1fjq")]
-position = Vector2(83, 59)
+position = Vector2(76, 102)
 
 [node name="Spawner2" parent="." instance=ExtResource("4_o1fjq")]
-position = Vector2(1071, 602)
+position = Vector2(53, -523)
 
 [node name="Spawner3" parent="." instance=ExtResource("4_o1fjq")]
-position = Vector2(77, 581)
+position = Vector2(-393, 902)
 
 [node name="Spawner4" parent="." instance=ExtResource("4_o1fjq")]
-position = Vector2(1052, 55)
-
-[node name="Spawner5" parent="." instance=ExtResource("4_o1fjq")]
-position = Vector2(846, -198)
-
-[node name="Spawner6" parent="." instance=ExtResource("4_o1fjq")]
-position = Vector2(633, 1111)
-
-[node name="Spawner7" parent="." instance=ExtResource("4_o1fjq")]
-position = Vector2(-645, 969)
+position = Vector2(445, -1395)
 
 [node name="SpawnTimer" type="Timer" parent="."]
-wait_time = 1.5
+wait_time = 3.0
 
 [node name="NimblePower" parent="." instance=ExtResource("6_21xkr")]
-position = Vector2(-314, -632)
+position = Vector2(-1098, -617)
 
 [node name="LevelMusic" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_ynf5e")
 autoplay = true
 
 [node name="Terry" parent="." instance=ExtResource("6_344ge")]
-position = Vector2(-723, -492)
+position = Vector2(-1492, -479)
 
 [node name="CritTest" type="AudioStreamPlayer2D" parent="."]
 

@@ -5,9 +5,9 @@ extends CharacterBody2D
 @export var acceleration: float = 800.0
 @export var friction: float = 600.0
 
-# Dashing TEST
-@export var dashing_speed: float = 400.0
-@export var dash_time: float = 0.2
+# Dashing 
+@export var dashing_speed: float = 600.0
+@export var dash_time: float = .5
 
 # These don't work how I thought
 @export var slice_sound : AudioStream
@@ -16,6 +16,7 @@ extends CharacterBody2D
 
 @onready var camera = $Camera2D
 @onready var animations = $AnimatedSprite2D
+@onready var audio_player = $AudioStreamPlayer2D
 
 var terry: Node2D = null
 var pulling_terry = false
@@ -80,17 +81,18 @@ func play_animation():
 		
 func set_power(power: String):
 	if power == "nimble":
-		ability = dash # No parentheses because its assignment, not a call to dash()
+		ability = dash # No parentheses on the call to "dash()" because its assignment, not a call to dash()
 
 func dash(delta):
 	if not power_ready:
 		power_ready = true
-		$AudioStreamPlayer2D.play() # Temporary works for dash sound
-		velocity = velocity.move_toward(DisplayServer.mouse_get_position(), acceleration * delta )
+		audio_player.stream = dash_sound
+		audio_player.play() 
 		velocity *= dashing_speed / max_speed
+		move_and_slide()
 		await get_tree().create_timer(dash_time).timeout
 		power_ready = false
-		move_and_slide()
+		velocity *= Vector2.ZERO
 	
 func riot_charge():
 	pass
@@ -103,10 +105,12 @@ func _on_area_2d_spawn_inhibitor_body_entered(body):
 	if body.is_in_group("terry"):
 		near_terry = true
 		terry = body
-	# Rough "mele" kill mechanic
+	
+	# Rough "melee" kill mechanic
 	if body.is_in_group("basic_zombie") and power_ready:
-		body.shot(200)
-		$Slice.play()
+		body.hit(200)
+		audio_player.stream = slice_sound
+		audio_player.play()
 		
 		
 
@@ -114,5 +118,4 @@ func _on_area_2d_spawn_inhibitor_body_entered(body):
 func _on_area_2d_spawn_inhibitor_body_exited(body):
 	if body.is_in_group("terry"):
 		near_terry = false
-		pass
-		#terry = null
+		
