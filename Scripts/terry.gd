@@ -3,13 +3,16 @@ extends RigidBody2D
 @export var pull_force = 500.0
 @export var friction = 400.0
 
-var is_pulled = false
-var player_ref: Node2D = null
-var direction: Vector2
-
-@onready var terry_collison = $CollisionShape2D
+@onready var terry_collison = $TerryCollisionShape
 @onready var audio_player = $AudioStreamPlayer2D
 @onready var health_bar = $ProgressBar
+@onready var leash = $LeashLine
+
+var is_pulled = false
+var leashed = false
+var player_ref: Node2D = null
+var direction: Vector2
+var colliding_objects: Array = []
 
 func _ready():
 	player_ref = get_tree().get_first_node_in_group("player")
@@ -17,31 +20,44 @@ func _ready():
 
 
 func _process(delta):
-	pass
+	check_collision_type(colliding_objects)
 
 
 func _physics_process(delta):
 	
-	# I do not know if this does anything...
-	if (direction - global_position) == Vector2.ONE:
-		apply_force(Vector2.ZERO * friction)
-		
 	if is_pulled and player_ref:
 		direction = (player_ref.global_position - global_position).normalized()
 		apply_force(direction * pull_force)
 		
+	if leashed and player_ref:
 		# Leash visual
-		$Line2D.clear_points()
-		$Line2D.points = [
-			$Line2D.to_local(global_position),
-			$Line2D.to_local(player_ref.global_position)
+		leash.clear_points()
+		leash.points = [
+			leash.to_local(global_position),
+			leash.to_local(player_ref.global_position)
 		]
+
+func check_collision_type(objects: Array):
+	#TODO: This works. But it calls is every frame so terry dies SUPER quick. 
+	# Need a way to ensure it only happens every second. Probably make a function to handle
+	# second to second activities rather than frame by frame activites.
+	if objects.is_empty():
+		return
+	var length = objects.size()
+	for i in range(length):
+		if objects[i].is_in_group("basic_zombie"):
+			# TODO: FIX: Audio re-triggers everyframe so you never hear it play. 
+			audio_player.play()
+			health_bar.value = health_bar.value - 0.1
+
+func remove_from_collision_area_array(object: Node):
+	colliding_objects.erase(object)
 
 
 func _on_terry_body_zone_body_entered(body):
-	if body.is_in_group("basic_zombie"):
-		# Zombies currently trigger only once when they enter Terry's Area2D
-		#TODO: Change to every 2 seconds (or something like that) zombies deal damage
-		# while still in Terry's area2D.
-		audio_player.play()
-		health_bar.value = health_bar.value - 10
+	colliding_objects.append(body)
+	
+
+
+func _on_terry_body_zone_body_exited(body):
+	call_deferred("remove_from_collision_area_array", body)

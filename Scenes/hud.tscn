@@ -18,6 +18,8 @@ size_flags_vertical = 4
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
-offset_right = 153.0
-offset_bottom = 34.0
-text = "Press Eeeeeeeee"
+offset_left = 38.0
+offset_top = 24.5
+offset_right = 191.0
+offset_bottom = 58.5
+text = "PROTOTYPE "

@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://ol8fcgtf8akr"]
 
 [ext_resource type="Script" uid="uid://o67hixtk2026" path="res://Scripts/terry.gd" id="1_3p6b6"]
-[ext_resource type="Texture2D" uid="uid://dckb0bvu3ax3m" path="res://Assests/Art/PlayerSprites/playertest.png" id="1_4swkh"]
+[ext_resource type="Texture2D" uid="uid://dxv8rdphc06q2" path="res://Assests/Art/PlayerSprites/TerryV2.png" id="2_v1w1x"]
 [ext_resource type="AudioStream" uid="uid://4omokj15is4c" path="res://Assests/Sound/ZombieSounds/meowv1.wav" id="3_v1w1x"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_3p6b6"]
@@ -9,13 +9,13 @@ friction = 2.0
 rough = true
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3p6b6"]
-radius = 188.13
+radius = 317.057
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v1w1x"]
-radius = 56.0089
+radius = 81.0494
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_osmod"]
-radius = 85.0235
+radius = 91.1976
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v1w1x"]
 bg_color = Color(0, 0.722124, 0.290551, 1)
@@ -29,21 +29,21 @@ script = ExtResource("1_3p6b6")
 pull_force = 23.0
 friction = 700.0
 
-[node name="Line2D" type="Line2D" parent="."]
+[node name="LeashLine" type="Line2D" parent="."]
 width = 7.0
 default_color = Color(0.529935, 0.366272, 0.202985, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, 1)
-scale = Vector2(4, 4)
-texture = ExtResource("1_4swkh")
+scale = Vector2(5, 5)
+texture = ExtResource("2_v1w1x")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="PullingRadius" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PullingRadius"]
 shape = SubResource("CircleShape2D_3p6b6")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="TerryCollisionShape" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_v1w1x")
 
 [node name="TerryBodyZone" type="Area2D" parent="."]
@@ -65,3 +65,4 @@ fill_mode = 3
 show_percentage = false
 
 [connection signal="body_entered" from="TerryBodyZone" to="." method="_on_terry_body_zone_body_entered"]
+[connection signal="body_exited" from="TerryBodyZone" to="." method="_on_terry_body_zone_body_exited"]

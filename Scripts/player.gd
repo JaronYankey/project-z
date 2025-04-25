@@ -51,10 +51,12 @@ func _physics_process(delta):
 		# Must use .call() on the var ability to get the function to run.
 		if ability:
 			ability.call(delta) # Run the appropriate function for the power the player has.
+		
 	if Input.is_action_just_released("interact") and near_terry:
 		terry_leashed = !terry_leashed
-		terry.is_pulled = !terry.is_pulled
-		pulling_terry = !pulling_terry
+		terry.leashed = !terry.leashed
+		#terry.is_pulled = !terry.is_pulled
+		#pulling_terry = !pulling_terry
 	
 	if pulling_terry:
 		max_speed = 27
@@ -105,6 +107,8 @@ func _on_area_2d_spawn_inhibitor_body_entered(body):
 	if body.is_in_group("terry"):
 		near_terry = true
 		terry = body
+		pulling_terry = false
+		terry.is_pulled = false
 	
 	# Rough "melee" kill mechanic
 	if body.is_in_group("basic_zombie") and power_ready:
@@ -118,4 +122,12 @@ func _on_area_2d_spawn_inhibitor_body_entered(body):
 func _on_area_2d_spawn_inhibitor_body_exited(body):
 	if body.is_in_group("terry"):
 		near_terry = false
+		terry.is_pulled = true
+		pulling_terry = true
 		
+
+# TODO FIX: I have pulling terry on a body entered. It needs to be an area entered signal.
+# Also have too many semi-duplicate veriables that are being used/checked. This makes it harder to 
+# maintain and read. 
+func _on_area_2d_spawn_inhibitor_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
+	pass # Replace with function body.
