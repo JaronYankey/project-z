@@ -1,7 +1,6 @@
 extends RigidBody2D
 
 @export var pull_force = 500.0
-@export var friction = 400.0
 
 @onready var terry_collison = $TerryCollisionShape
 @onready var audio_player = $AudioStreamPlayer2D
@@ -26,6 +25,8 @@ func _process(delta):
 func _physics_process(delta):
 	
 	if is_pulled and player_ref:
+		#Speed variance is controlled by the Rigidbody 2D physics materials property
+		# "Mass", 0.2kg feels like a good "medium" starting point for Terry's weighty feel.
 		direction = (player_ref.global_position - global_position).normalized()
 		apply_force(direction * pull_force)
 		
@@ -39,8 +40,8 @@ func _physics_process(delta):
 
 func check_collision_type(objects: Array):
 	#TODO: This works. But it calls is every frame so terry dies SUPER quick. 
-	# Need a way to ensure it only happens every second. Probably make a function to handle
-	# second to second activities rather than frame by frame activites.
+	# NOTE: reducing the damage output to something very small seems okay. 
+	# it gives a nice slower steady health depletion. 
 	if objects.is_empty():
 		return
 	var length = objects.size()

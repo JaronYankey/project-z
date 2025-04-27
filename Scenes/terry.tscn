@@ -4,9 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://dxv8rdphc06q2" path="res://Assests/Art/PlayerSprites/TerryV2.png" id="2_v1w1x"]
 [ext_resource type="AudioStream" uid="uid://4omokj15is4c" path="res://Assests/Sound/ZombieSounds/meowv1.wav" id="3_v1w1x"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_3p6b6"]
-friction = 2.0
-rough = true
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_v1w1x"]
+friction = 0.3
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3p6b6"]
 radius = 317.057
@@ -21,16 +20,19 @@ radius = 91.1976
 bg_color = Color(0, 0.722124, 0.290551, 1)
 
 [node name="Terry" type="RigidBody2D" groups=["terry"]]
-physics_material_override = SubResource("PhysicsMaterial_3p6b6")
+mass = 0.2
+physics_material_override = SubResource("PhysicsMaterial_v1w1x")
 gravity_scale = 0.0
+sleeping = true
 linear_damp_mode = 1
 linear_damp = 1.0
 script = ExtResource("1_3p6b6")
 pull_force = 23.0
-friction = 700.0
 
 [node name="LeashLine" type="Line2D" parent="."]
-width = 7.0
+visibility_layer = 2
+z_as_relative = false
+width = 6.0
 default_color = Color(0.529935, 0.366272, 0.202985, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -38,7 +40,7 @@ position = Vector2(0, 1)
 scale = Vector2(5, 5)
 texture = ExtResource("2_v1w1x")
 
-[node name="PullingRadius" type="Area2D" parent="."]
+[node name="PullingRadius" type="Area2D" parent="." groups=["pull_radius"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PullingRadius"]
 shape = SubResource("CircleShape2D_3p6b6")

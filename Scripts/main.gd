@@ -11,10 +11,10 @@ func _ready():
 
 func _on_crit():
 	print("CRIT RECEIVED!!!")
-#TODO Need to do something about the custome ghetto scaling for sprites that i'm doing currently. r
+#TODO Need to do something about the custome ghetto scaling for sprites that i'm doing currently.
 
 # TODO: Make it so zombies dont spawn if the player is in the area. I dont ever
-# want the player to see a zombie spawn. Shold always feel like their coming from off screen
+# want the player to see a zombie spawn. Should always feel like they're coming from off screen
 # (and they should be)
 
 # - Make player's area2D disable spawners in view. Defer spawns to open 

@@ -72,8 +72,9 @@ animations = [{
 radius = 5.5
 height = 17.5
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_2qnan"]
-radius = 11.3616
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fkybt"]
+radius = 6.57895
+height = 18.4211
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 scale = Vector2(3.8, 3.8)
@@ -81,7 +82,6 @@ motion_mode = 1
 script = ExtResource("1_oukv8")
 slice_sound = ExtResource("5_fkybt")
 dash_sound = ExtResource("3_6t5aa")
-metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -99,7 +99,8 @@ shape = SubResource("CapsuleShape2D_cvnsp")
 [node name="Area2DSpawnInhibitor" type="Area2D" parent="." groups=["player"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DSpawnInhibitor"]
-shape = SubResource("CircleShape2D_2qnan")
+position = Vector2(-0.263158, 2.10526)
+shape = SubResource("CapsuleShape2D_fkybt")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 process_callback = 0
@@ -108,15 +109,16 @@ process_callback = 0
 stream = ExtResource("3_6t5aa")
 
 [node name="HUD" parent="." instance=ExtResource("4_vgqql")]
-offset_left = -212.0
-offset_top = -118.0
-offset_right = 214.0
-offset_bottom = 121.0
+offset_left = -214.737
+offset_top = -115.526
+offset_right = 211.263
+offset_bottom = 123.474
 
 [node name="Slice" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_fkybt")
 volume_db = -7.287
 
-[connection signal="area_shape_entered" from="Area2DSpawnInhibitor" to="." method="_on_area_2d_spawn_inhibitor_area_shape_entered"]
+[connection signal="area_entered" from="Area2DSpawnInhibitor" to="." method="_on_area_2d_spawn_inhibitor_area_entered"]
+[connection signal="area_exited" from="Area2DSpawnInhibitor" to="." method="_on_area_2d_spawn_inhibitor_area_exited"]
 [connection signal="body_entered" from="Area2DSpawnInhibitor" to="." method="_on_area_2d_spawn_inhibitor_body_entered"]
 [connection signal="body_exited" from="Area2DSpawnInhibitor" to="." method="_on_area_2d_spawn_inhibitor_body_exited"]

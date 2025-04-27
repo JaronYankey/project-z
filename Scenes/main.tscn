@@ -16,6 +16,9 @@ enemy_scenes = [ExtResource("3_o082i")]
 
 [node name="MainMap" parent="." instance=ExtResource("3_344ge")]
 
+[node name="Terry" parent="." instance=ExtResource("6_344ge")]
+position = Vector2(-1492, -479)
+
 [node name="Player" parent="." instance=ExtResource("1_1jsbg")]
 position = Vector2(-1269, -634)
 
@@ -46,9 +49,6 @@ position = Vector2(-1098, -617)
 [node name="LevelMusic" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_ynf5e")
 autoplay = true
-
-[node name="Terry" parent="." instance=ExtResource("6_344ge")]
-position = Vector2(-1492, -479)
 
 [node name="CritTest" type="AudioStreamPlayer2D" parent="."]
 
