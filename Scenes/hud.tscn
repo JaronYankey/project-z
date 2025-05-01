@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://ulmrovix8u3m"]
+[gd_scene load_steps=2 format=3 uid="uid://ulmrovix8u3m"]
+
+[ext_resource type="Script" uid="uid://dpa2afca3lpku" path="res://Scenes/hud.gd" id="1_e0onf"]
 
 [node name="HUD" type="Control"]
 layout_mode = 3
@@ -15,6 +17,8 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+script = ExtResource("1_e0onf")
+metadata/_edit_group_ = true
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
@@ -23,3 +27,7 @@ offset_top = 24.5
 offset_right = 191.0
 offset_bottom = 58.5
 text = "PROTOTYPE "
+
+[node name="TimerPROTO" type="Timer" parent="."]
+wait_time = 8.245
+autostart = true

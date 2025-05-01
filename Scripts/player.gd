@@ -28,7 +28,10 @@ var ability
 
 func _ready():
 	# For now we allow smoothing, adds some juice. 
-	camera.position_smoothing_enabled = true;
+	# If below camera code is commented out, or false, its likely due to testing.
+	camera.position_smoothing_enabled = true
+	camera.enabled = true
+	
 
 func _process(delta):
 	play_animation()
