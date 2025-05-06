@@ -1,11 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://ol8fcgtf8akr"]
+[gd_scene load_steps=8 format=3 uid="uid://ol8fcgtf8akr"]
 
 [ext_resource type="Script" uid="uid://o67hixtk2026" path="res://Scripts/terry.gd" id="1_3p6b6"]
 [ext_resource type="Texture2D" uid="uid://dxv8rdphc06q2" path="res://Assests/Art/PlayerSprites/TerryV2.png" id="2_v1w1x"]
 [ext_resource type="AudioStream" uid="uid://4omokj15is4c" path="res://Assests/Sound/ZombieSounds/meowv1.wav" id="3_v1w1x"]
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_v1w1x"]
-friction = 0.3
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3p6b6"]
 radius = 317.057
@@ -19,13 +16,8 @@ radius = 91.1976
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v1w1x"]
 bg_color = Color(0, 0.722124, 0.290551, 1)
 
-[node name="Terry" type="RigidBody2D" groups=["terry"]]
-mass = 0.2
-physics_material_override = SubResource("PhysicsMaterial_v1w1x")
-gravity_scale = 0.0
-sleeping = true
-linear_damp_mode = 1
-linear_damp = 1.0
+[node name="Terry" type="CharacterBody2D" groups=["terry"]]
+motion_mode = 1
 script = ExtResource("1_3p6b6")
 pull_force = 23.0
 

@@ -1,4 +1,4 @@
-extends RigidBody2D
+extends CharacterBody2D
 
 @export var pull_force = 500.0
 
@@ -10,7 +10,6 @@ extends RigidBody2D
 var is_pulled = false
 var leashed = false
 var player_ref: Node2D = null
-var direction: Vector2
 var colliding_objects: Array = []
 
 func _ready():
@@ -24,11 +23,16 @@ func _process(delta):
 
 func _physics_process(delta):
 	
+	# TODO FIX TERRY MOVEMENT. I CHANGED FROM A PHYSICS BODY2D TO A CHARACTERBODY2D
+	# MOVEMENT IS BROKEN NOW, BUT IN THE LONG TERM SHOULD SERVE BETTER FOR HIS AI MOVEMENT.
 	if is_pulled and player_ref:
-		#Speed variance is controlled by the Rigidbody 2D physics materials property
-		# "Mass", 0.2kg feels like a good "medium" starting point for Terry's weighty feel.
-		direction = (player_ref.global_position - global_position).normalized()
-		apply_force(direction * pull_force)
+		var direction = (player_ref.global_position - global_position).normalized()
+		var pull_strength = 200  # Lower = heavier
+		velocity = direction * pull_strength
+		move_and_slide()
+		
+		# Get the cat FEELING like a cat!:D
+		
 		
 	if leashed and player_ref:
 		# Leash visual
@@ -37,6 +41,9 @@ func _physics_process(delta):
 			leash.to_local(global_position),
 			leash.to_local(player_ref.global_position)
 		]
+
+
+
 
 func check_collision_type(objects: Array):
 	#TODO: This works. But it calls is every frame so terry dies SUPER quick. 
