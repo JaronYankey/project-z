@@ -76,7 +76,7 @@ height = 17.5
 radius = 6.57895
 height = 18.4211
 
-[node name="Player" type="CharacterBody2D" groups=["player"]]
+[node name="Player" type="CharacterBody2D" groups=["living", "player"]]
 scale = Vector2(3.8, 3.8)
 motion_mode = 1
 script = ExtResource("1_oukv8")

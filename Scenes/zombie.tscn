@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dcqsh2kvsd1eb"]
+[gd_scene load_steps=13 format=3 uid="uid://dcqsh2kvsd1eb"]
 
 [ext_resource type="Script" uid="uid://b01s4x8uqkebb" path="res://Scripts/zombie.gd" id="1_p82q3"]
 [ext_resource type="Texture2D" uid="uid://dvjb5qo4f3m1o" path="res://Assests/Art/EnemySprites/zombie.png" id="2_n70j1"]
@@ -48,6 +48,9 @@ height = 17.6
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n70j1"]
 bg_color = Color(0.323825, 0.701234, 0.224525, 1)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_vy0uf"]
+radius = 10.5367
+
 [node name="Zombie" type="CharacterBody2D" groups=["basic_zombie"]]
 scale = Vector2(3.75, 3.75)
 motion_mode = 1
@@ -80,4 +83,14 @@ stream = ExtResource("3_iyl7r")
 [node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_vy0uf")
 
+[node name="LineOfSight" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LineOfSight"]
+scale = Vector2(4, 4)
+shape = SubResource("CircleShape2D_vy0uf")
+
 [connection signal="finished" from="DeathSound" to="." method="_on_death_sound_finished"]
+[connection signal="area_entered" from="LineOfSight" to="." method="_on_line_of_sight_area_entered"]
+[connection signal="area_exited" from="LineOfSight" to="." method="_on_line_of_sight_area_exited"]
+[connection signal="body_entered" from="LineOfSight" to="." method="_on_line_of_sight_body_entered"]
+[connection signal="body_exited" from="LineOfSight" to="." method="_on_line_of_sight_body_exited"]

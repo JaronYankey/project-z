@@ -8,15 +8,15 @@
 radius = 317.057
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v1w1x"]
-radius = 81.0494
+radius = 41.4849
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_osmod"]
-radius = 91.1976
+radius = 84.0952
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v1w1x"]
 bg_color = Color(0, 0.722124, 0.290551, 1)
 
-[node name="Terry" type="CharacterBody2D" groups=["terry"]]
+[node name="Terry" type="CharacterBody2D" groups=["living", "terry"]]
 motion_mode = 1
 script = ExtResource("1_3p6b6")
 pull_force = 23.0
@@ -28,11 +28,12 @@ width = 6.0
 default_color = Color(0.529935, 0.366272, 0.202985, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, 1)
-scale = Vector2(5, 5)
+position = Vector2(-1, -5)
+scale = Vector2(3.15625, 3.46875)
 texture = ExtResource("2_v1w1x")
 
 [node name="PullingRadius" type="Area2D" parent="." groups=["pull_radius"]]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PullingRadius"]
 shape = SubResource("CircleShape2D_3p6b6")
@@ -49,14 +50,22 @@ shape = SubResource("CircleShape2D_osmod")
 stream = ExtResource("3_v1w1x")
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
-offset_left = 60.0
-offset_top = -75.0
-offset_right = 73.0
-offset_bottom = 46.0
+offset_left = 61.0
+offset_top = -55.0
+offset_right = 74.0
+offset_bottom = 66.0
 rotation = 1.5708
 theme_override_styles/fill = SubResource("StyleBoxFlat_v1w1x")
 fill_mode = 3
 show_percentage = false
 
+[node name="IdleTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="MovingTimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="body_entered" from="TerryBodyZone" to="." method="_on_terry_body_zone_body_entered"]
 [connection signal="body_exited" from="TerryBodyZone" to="." method="_on_terry_body_zone_body_exited"]
+[connection signal="timeout" from="IdleTimer" to="." method="_on_idle_timer_timeout"]
+[connection signal="timeout" from="MovingTimer" to="." method="_on_moving_timer_timeout"]
